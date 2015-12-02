@@ -1,17 +1,16 @@
 import org.hibernate.HibernateException;
-import org.hibernate.SessionFactory;
-import org.hibernate.Session;
 import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
+import java.security.MessageDigest;
 import java.util.Map;
 
-/**
- * Created by jan on 01/12/15.
- */
+
 public class Factory {
     private static final SessionFactory ourSessionFactory;
     private static final ServiceRegistry serviceRegistry;
@@ -33,6 +32,10 @@ public class Factory {
     }
 
     public static void main(final String[] args) throws Exception {
+
+        String yourString = "123456";
+
+
         final Session session = getSession();
         try {
             System.out.println("requete toutes les entite managable...");

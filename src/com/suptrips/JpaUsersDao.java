@@ -2,6 +2,8 @@ package com.suptrips;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 /**
@@ -35,21 +37,58 @@ public class JpaUsersDao implements UsersDao {
 
     @Override
     public Users findUserById(int idbooster) {
-        return null;
+        Users result;
+
+        EntityManager em = emf.createEntityManager();
+        try {
+            result = em.find(Users.class, idbooster);
+        }catch (NoResultException e){
+            result= null;
+        }finally {
+            em.close();
+        }
+        return result;
     }
 
     @Override
     public List<Users> getAllUsers() {
-        return null;
+        EntityManager em = emf.createEntityManager();
+        try {
+            CriteriaQuery<Users> criteriaQuery = em.getCriteriaBuilder().createQuery(Users.class);
+            criteriaQuery.from(Users.class);
+            return em.createQuery(criteriaQuery).getResultList();
+        }finally {
+            em.close();
+        }
     }
 
     @Override
     public void updateUsers(Users users) {
-
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+            em.merge(users);
+            em.getTransaction().commit();
+        } finally {
+            if (em.getTransaction().isActive()){
+                em.getTransaction().rollback();
+            }
+            em.close();
+        }
     }
 
     @Override
     public void removeUsers(Users users) {
-
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        try {
+            em.remove(em.merge(users));
+            em.getTransaction().commit();
+        } finally {
+            if (em.getTransaction().isActive()){
+                em.getTransaction().rollback();
+            }
+            em.close();
+        }
     }
 }
