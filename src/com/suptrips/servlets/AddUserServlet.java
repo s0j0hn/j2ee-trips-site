@@ -1,5 +1,6 @@
 package com.suptrips.servlets;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +21,7 @@ public class AddUserServlet extends HttpServlet {
         String idbooster = request.getParameter("idbooster").trim();
         String password = request.getParameter("password").trim();
         byte[] bytesOfMessage = password.getBytes("UTF-8");
-
+        //hash md5
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");
@@ -28,7 +29,10 @@ public class AddUserServlet extends HttpServlet {
             e.printStackTrace();
         }
         byte[] thedigest = md.digest(bytesOfMessage);
+    }
 
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
+        rd.forward(request, response);
     }
 }
