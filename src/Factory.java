@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by jan on 01/12/15.
  */
-public class Main {
+public class Factory {
     private static final SessionFactory ourSessionFactory;
     private static final ServiceRegistry serviceRegistry;
 
@@ -35,7 +35,7 @@ public class Main {
     public static void main(final String[] args) throws Exception {
         final Session session = getSession();
         try {
-            System.out.println("querying all the managed entities...");
+            System.out.println("requete toutes les entite managable...");
             final Map metadataMap = session.getSessionFactory().getAllClassMetadata();
             for (Object key : metadataMap.keySet()) {
                 final ClassMetadata classMetadata = (ClassMetadata) metadataMap.get(key);

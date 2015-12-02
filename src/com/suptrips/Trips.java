@@ -24,9 +24,9 @@ public class Trips implements Serializable {
 	
 	@Column(name="idtrip", nullable=false, length=11)	
 	@Id	
-	@GeneratedValue(generator="COM_SUPTRIPS_TRIPS_IDTRIP_GENERATOR")	
+	@GeneratedValue(strategy=GenerationType.AUTO)
 
-	private int idtrip;
+	private Long idtrip;
 	
 	@Column(name="depart_date", nullable=true)	
 	@Temporal(TemporalType.DATE)	
@@ -46,11 +46,11 @@ public class Trips implements Serializable {
 
 	private java.util.Set users = new java.util.HashSet();
 	
-	private void setIdtrip(int value) {
+	private void setIdtrip(Long value) {
 		this.idtrip = value;
 	}
 	
-	public int getIdtrip() {
+	public Long getIdtrip() {
 		return idtrip;
 	}
 	
@@ -93,8 +93,7 @@ public class Trips implements Serializable {
 	public java.util.Set getUsers() {
 		return users;
 	}
-	
-	
+
 	public String toString() {
 		return String.valueOf(getIdtrip());
 	}
