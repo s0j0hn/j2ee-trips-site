@@ -13,7 +13,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Created by root on 02/12/15.
  */
-@WebServlet("/auth/addUser")
+@WebServlet("/register")
 public class AddUserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException

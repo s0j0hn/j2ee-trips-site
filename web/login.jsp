@@ -1,16 +1,16 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: root
-  Date: 02/12/15
-  Time: 17:37
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>SupTrip Login</title>
+    <meta charset="UTF-8">
+    <title>Login</title>
 </head>
 <body>
-
+<form method="post" action="login">
+    <label for="username">Username : </label>
+    <input id="username" name="username" /><br />
+    <input type="submit" />
+</form>
 </body>
 </html>

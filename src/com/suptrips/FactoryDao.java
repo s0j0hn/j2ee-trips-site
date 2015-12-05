@@ -1,8 +1,6 @@
 package com.suptrips;
 
 
-import javax.persistence.Persistence;
-
 public class FactoryDao {
 
     private static TripsDao tripsservice;
@@ -10,7 +8,7 @@ public class FactoryDao {
 
     public static TripsDao getTripsDao(){
         if (tripsservice == null) {
-            tripsservice = new JpaTripsDao(Persistence.);
+            tripsservice = new JpaTripsDao(PersistenceManager.getEntityManagerFactory());
         }
         return tripsservice;
     }
