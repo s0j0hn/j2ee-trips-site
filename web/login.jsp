@@ -8,8 +8,8 @@
 </head>
 <body>
 <form method="post" action="login">
-    <label for="username">Idbooster : </label>
-    <input id="username" name="username" /><br />
+    <label for="idbooster">Idbooster : </label>
+    <input id="idbooster" name="idbooster" /><br />
 
     <label for="password">Password : </label>
     <input id="password" name="password" /><br />

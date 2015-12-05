@@ -15,13 +15,13 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
+        String idbooster = request.getParameter("idbooster");
         String password = request.getParameter("password");
 
         HttpSession session = request.getSession();
-        session.setAttribute("username", username);
+        session.setAttribute("idbooster", idbooster);
         session.setAttribute("password", password);
-        response.sendRedirect(request.getContextPath() + "/ShowTrip");
+        response.sendRedirect(request.getContextPath() + "/listTripsServlet");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
