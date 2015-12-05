@@ -1,4 +1,4 @@
-package com.suptrips.filter;
+/*package com.suptrips.filter;
 
 import javax.servlet.annotation.WebFilter;
 
@@ -6,3 +6,4 @@ import javax.servlet.annotation.WebFilter;
 @WebFilter("/auth/*")
 public class AuthFilter {
 }
+*/

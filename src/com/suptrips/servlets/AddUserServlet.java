@@ -18,10 +18,17 @@ public class AddUserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException
     {
-        String idbooster = request.getParameter("idbooster").trim();
+        String campusname = request.getParameter("campusname").trim();
         String password = request.getParameter("password").trim();
+        String firstname = request.getParameter("firstname").trim();
+        String lastanme = request.getParameter("lastname").trim();
+        String email = request.getParameter("email").trim();
+
+
         byte[] bytesOfMessage = password.getBytes("UTF-8");
+        //
         //hash md5
+        //
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");
