@@ -19,13 +19,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>listTrips</servlet-name>
-        <servlet-class>com.suptrips.servlets.ListTripsServlet</servlet-class>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>com.suptrips.servlets.AddUserServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>listTrips</servlet-name>
-        <url-pattern>/listTripsServlet</url-pattern>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/AddUserServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

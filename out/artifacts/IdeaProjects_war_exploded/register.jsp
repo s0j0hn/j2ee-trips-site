@@ -19,10 +19,9 @@
 
     <label for="email">Email : </label>
     <input id="email" name="email" /><br />
-    <input type="submit" />
 
     <label for="password">Password : </label>
-    <input id="password" name="password" /><br />
+    <input id="password" name="password" type="password"/><br />
     <input type="submit" />
 
 </form>

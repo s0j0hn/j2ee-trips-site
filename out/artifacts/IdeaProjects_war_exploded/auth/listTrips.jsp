@@ -6,7 +6,6 @@
          pageEncoding="UTF-8"%>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>List of Trips</title>
 </head>
 <body>
@@ -17,7 +16,7 @@
         <p>
             <c:out value="${t.depart_date}" /><br />
             <c:out value="${t.arrive_date}" />  <br />
-            <a href="showTrip?id=<c:out value="${p.id}" />">Show details</a>
+            <a href="/auth/showTrip?id=<c:out value="${t.idtrip}" />">Show details</a>
         </p>
     </c:forEach>
 </body>

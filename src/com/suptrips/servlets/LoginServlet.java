@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("idbooster", idbooster);
         session.setAttribute("password", password);
-        response.sendRedirect(request.getContextPath() + "/listTripsServlet");
+        response.sendRedirect(request.getContextPath() + "/auth/listTrips");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

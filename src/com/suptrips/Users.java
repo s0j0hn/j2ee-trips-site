@@ -13,8 +13,8 @@
  */
 package com.suptrips;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 @Entity
 
 @Table(name="Users")
@@ -38,7 +38,7 @@ public class Users implements Serializable {
 	private String email;
 
 	@Column(name="password", nullable=false, length=45)
-	private String password;
+	private byte[] password;
 
 	@Column(name="campus_name", nullable=true, length=45)	
 	private String campus_name;
@@ -93,7 +93,9 @@ public class Users implements Serializable {
 		this.trip_idtrip = value;
 	}
 
-	public String getPassword(){ return password; }
+	public byte[] getPassword(){ return password; }
+
+	public void setPassword(byte[] value) { this.password = value; }
 
 	public Trips getTrip_idtrip() {
 		return trip_idtrip;

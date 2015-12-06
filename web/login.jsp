@@ -12,7 +12,7 @@
     <input id="idbooster" name="idbooster" /><br />
 
     <label for="password">Password : </label>
-    <input id="password" name="password" /><br />
+    <input id="password" name="password" type="password" /><br />
 
     <input type="submit" />
 </form>

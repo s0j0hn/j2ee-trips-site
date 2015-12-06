@@ -1,5 +1,8 @@
 package com.suptrips.servlets;
 
+import com.suptrips.FactoryDao;
+import com.suptrips.Users;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,6 +39,15 @@ public class AddUserServlet extends HttpServlet {
             e.printStackTrace();
         }
         byte[] thedigest = md.digest(bytesOfMessage);
+
+        Users newuser = new Users();
+        newuser.setCampus_name(campusname);
+        newuser.setEmail(email);
+        newuser.setFirstname(firstname);
+        newuser.setLastname(lastanme);
+        newuser.setPassword(thedigest);
+
+        request.setAttribute("users", FactoryDao.getUsersDao().addUser(newuser));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
