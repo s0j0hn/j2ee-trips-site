@@ -26,12 +26,10 @@ public class AddUserServlet extends HttpServlet {
         String firstname = request.getParameter("firstname").trim();
         String lastanme = request.getParameter("lastname").trim();
         String email = request.getParameter("email").trim();
-
-
-        byte[] bytesOfMessage = password.getBytes("UTF-8");
         //
         //hash md5
         //
+        byte[] bytesOfMessage = password.getBytes("UTF-8");
         MessageDigest md = null;
         try {
             md = MessageDigest.getInstance("MD5");
@@ -39,13 +37,17 @@ public class AddUserServlet extends HttpServlet {
             e.printStackTrace();
         }
         byte[] thedigest = md.digest(bytesOfMessage);
+        StringBuffer passwordmd5 = new StringBuffer();
+        for (byte b : thedigest) {
+            passwordmd5.append(String.format("%02x", b & 0xff));
+        }
 
         Users newuser = new Users();
         newuser.setCampus_name(campusname);
         newuser.setEmail(email);
         newuser.setFirstname(firstname);
         newuser.setLastname(lastanme);
-        newuser.setPassword(thedigest);
+        newuser.setPassword(passwordmd5);
 
         request.setAttribute("users", FactoryDao.getUsersDao().addUser(newuser));
     }

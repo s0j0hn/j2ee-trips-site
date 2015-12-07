@@ -6,10 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -20,7 +17,7 @@ public class TripsResource {
     @Path("/listtrips")
     public String getAllTripsInXml() {
         List<Trips> trips = FactoryDao.getTripsDao().getAllTrips();
-        String result = new String("<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?><products>");
+        String result = new String("<?xml version=\"1.0\" encoding=\"UTF-8\"?><trips>");
         for (Trips trips1 : trips){
             result = result.concat("<trips><idtrip>"+trips1.getIdtrip()+"</idtrip><arrive_date>"+trips1.getArrive_campus()+"</arrive_date><depart_date>"+trips1.getDepart_date()+"</depart_date><depart_campus>"+trips1.getDepart_campus()+"</depart_campus></trips>");
         }
@@ -56,5 +53,9 @@ public class TripsResource {
         obj1.put("depart_campus",trips1.getDepart_campus());
         obj1.put("depart_date",trips1.getDepart_date());
         return obj1.toString();
+    }
+    @DELETE @Path("/listtrips/{id}")
+    public void removeTrips(@PathParam("idtrip") Long idtrip){
+        FactoryDao.getTripsDao().removeTrips(FactoryDao.getTripsDao().findProductById(idtrip));
     }
 }

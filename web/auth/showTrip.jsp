@@ -1,19 +1,19 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.suptrips.TripsDao"%>
 <%@ page import="com.suptrips.Trips"%>
 <%@ page import="java.util.List"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <html>
 <head>
-    <title>Product details</title>
+    <title>Trips details</title>
 </head>
 <body>
 <%@ include file="/header.jsp" %>
 
 <p>
     Depart :<br />
-    <c:out value="${trips.depart_date}" />
+    <c:out value="${t.depart_date}" />
     <br />
     <c:out value="${trips.depart_campus}" />
 </p>
@@ -26,11 +26,9 @@
 </p>
 
 <p>
-    <c:out value="${trip.users}" /> euros
+    <c:out value="${trips.users}" /> Utilisateurs
 
-    <c:if test="${! empty sessionScope.idbooster}">
 
-</c:if>
 </p>
 </body>
 </html>
