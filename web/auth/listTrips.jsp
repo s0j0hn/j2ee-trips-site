@@ -10,19 +10,18 @@
 </head>
 <body>
 <%@ include file="/header.jsp" %>
-<c:out value="This is JSTL"/>
+<c:out value="${}"/>
     <h1>List of All Trips</h1>
     <c:forEach items="${trips}" var="t">
         <p>-------------------------------------------------------------------------------------</p>
-        <h2>Depart :<c:out value="${t.depart_campus}"/></h2>
+        <h2>Depart : <c:out value="${t.depart_campus}"/></h2>
         <p>
             <c:out value="${t.depart_date}" /><br />
-        <h2>Arrive :<c:out value="${t.arrive_campus}"/></h2>
+        <h2>Arrive : <c:out value="${t.arrive_campus}"/></h2>
         <c:out value="${t.arrive_date}" />  <br />
 
         <c:if test="${! empty sessionScope.idbooster}">
             <form method="post" action="<%=request.getContextPath()%>/auth/addToBag">
-                <input type="hidden" name="idtrip" value="${trips.idtrip}" />
                 <input type="submit" value="Add to Bag">
             </form>
         </c:if>

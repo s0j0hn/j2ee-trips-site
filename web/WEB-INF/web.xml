@@ -9,6 +9,16 @@
     </welcome-file-list>
 
     <servlet>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <servlet-class>com.suptrips.servlets.UpdateUserServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <url-pattern>/updateuser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>com.suptrips.servlets.LoginServlet</servlet-class>
     </servlet>

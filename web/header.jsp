@@ -8,5 +8,6 @@
     <a href="<%= application.getContextPath() %>/logout">Logout</a>
     <% } else { %>
     <a href="<%= application.getContextPath() %>/login">Login</a>
+    <a href="<%= application.getContextPath() %>/register">Register</a>
     <% } %>
 </p>

@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by root on 02/12/15.
@@ -19,14 +17,14 @@ import java.security.NoSuchAlgorithmException;
 @WebServlet("/register")
 public class AddUserServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse reponse) throws ServletException, IOException
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String campusname = request.getParameter("campusname").trim();
         String password = request.getParameter("password").trim();
         String firstname = request.getParameter("firstname").trim();
         String lastanme = request.getParameter("lastname").trim();
         String email = request.getParameter("email").trim();
-        //
+        /*
         //hash md5
         //
         byte[] bytesOfMessage = password.getBytes("UTF-8");
@@ -40,16 +38,17 @@ public class AddUserServlet extends HttpServlet {
         StringBuffer passwordmd5 = new StringBuffer();
         for (byte b : thedigest) {
             passwordmd5.append(String.format("%02x", b & 0xff));
-        }
+        }*/
 
         Users newuser = new Users();
         newuser.setCampus_name(campusname);
         newuser.setEmail(email);
         newuser.setFirstname(firstname);
         newuser.setLastname(lastanme);
-        newuser.setPassword(passwordmd5);
+        newuser.setPassword(password);
 
         request.setAttribute("users", FactoryDao.getUsersDao().addUser(newuser));
+        response.sendRedirect(request.getContextPath() + "/login");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

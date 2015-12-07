@@ -38,7 +38,7 @@ public class Users implements Serializable {
 	private String email;
 
 	@Column(name="password", nullable=false, length=45)
-	private StringBuffer password;
+	private String password;
 
 	@Column(name="campus_name", nullable=true, length=45)	
 	private String campus_name;
@@ -93,9 +93,9 @@ public class Users implements Serializable {
 		this.trip_idtrip = value;
 	}
 
-	public StringBuffer getPassword(){ return password; }
+	public String getPassword(){ return password; }
 
-	public void setPassword(StringBuffer value) { this.password = value; }
+	public void setPassword(String value) { this.password = value; }
 
 	public Trips getTrip_idtrip() {
 		return trip_idtrip;

@@ -36,7 +36,7 @@ public class JpaUsersDao implements UsersDao {
     }
 
     @Override
-    public Users findUserById(int idbooster) {
+    public Users findUserById(long idbooster) {
         Users result;
 
         EntityManager em = emf.createEntityManager();

@@ -7,14 +7,13 @@
     <title>Login</title>
 </head>
 <body>
-<form method="post" action="login">
-    <label for="idbooster">Idbooster : </label>
-    <input id="idbooster" name="idbooster" /><br />
-
-    <label for="password">Password : </label>
-    <input id="password" name="password" type="password" /><br />
-
-    <input type="submit" />
-</form>
+<%@ include file="/header.jsp" %>
+    <form method="post" action="login">
+        <label for="idbooster">Idbooster : </label>
+        <input id="idbooster" name="idbooster" /><br />
+        <label for="password">Password : </label>
+        <input id="password" name="password" type="password" /><br />
+        <input type="submit" />
+    </form>
 </body>
 </html>
