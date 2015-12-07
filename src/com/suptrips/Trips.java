@@ -17,7 +17,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 @Entity
 
-@Table(name="Trips")
+@Table(name = "Trips", schema = "SupTrips")
 public class Trips implements Serializable {
 	public Trips() {
 	}

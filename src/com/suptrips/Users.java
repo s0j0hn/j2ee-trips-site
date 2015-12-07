@@ -17,14 +17,14 @@ import javax.persistence.*;
 import java.io.Serializable;
 @Entity
 
-@Table(name="Users")
+@Table(name="Users" , schema="SupTrips" )
 public class Users implements Serializable {
 	public Users() {
 	}
 	
 	@Column(name="idbooster", nullable=false, length=11)	
-	@Id	
-	@GeneratedValue(generator="COM_SUPTRIPS_USERS_IDBOOSTER_GENERATOR")	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 
 	private int idbooster;
 	
@@ -45,7 +45,7 @@ public class Users implements Serializable {
 	
 	@ManyToOne(targetEntity=Trips.class)
 
-	@JoinColumns({ @JoinColumn(name="Trip_idtrip", referencedColumnName="idtrip", nullable=false) })	
+	@JoinColumns({ @JoinColumn(name="Trip_idtrip", referencedColumnName="idtrip", nullable=true) })
 
 	private Trips trip_idtrip;
 	
