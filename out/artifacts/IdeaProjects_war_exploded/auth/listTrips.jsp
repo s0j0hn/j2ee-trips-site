@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.suptrips.TripsDao"%>
 <%@ page import="com.suptrips.Trips"%>
 <%@ page import="java.util.List"%>
