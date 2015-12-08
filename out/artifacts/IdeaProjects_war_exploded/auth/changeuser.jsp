@@ -2,14 +2,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@ include file="/header.jsp" %>
+<c:forEach items="${users}" var="u">
 <form method="post" action="updateuser">
-    <label for="firstname">New firstname : </label>
-    <input id="firstname" name="firstname"  /><br />
+    <label for="newfirstname">New firstname : </label>
+    <input id="newfirstname" name="newfirstname" value="<c:out value="${u.firstname}"" /><br />
     <label for="newpassword">New Password : </label>
     <input id="newpassword" name="newpassword" type="password" /><br />
-    <label for="lastname">New lastname : </label>
-    <input id="lastname" name="lastname"  /><br />
-    <label for="email">New email : </label>
-    <input id="email" name="email"  /><br />
+    <label for="newlastname">New lastname : </label>
+    <input id="newlastname" name="newlastname" value="<c:out value="${u.lastname}"" /><br />
+    <label for="newemail">New email : </label>
+    <input id="newemail" name="newemail" value="<c:out value="${u.email}"" /><br />
     <input type="submit" />
+</c:forEach>
 </form>

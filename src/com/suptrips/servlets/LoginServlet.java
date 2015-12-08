@@ -1,5 +1,7 @@
 package com.suptrips.servlets;
 
+import com.suptrips.FactoryDao;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +21,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         HttpSession session = request.getSession();
-        session.setAttribute("idbooster", idbooster);
+        session.setAttribute("idbooster", FactoryDao.getUsersDao().findUserById(Long.parseLong(idbooster)));
         session.setAttribute("password", password);
         response.sendRedirect(request.getContextPath() + "/auth/listTrips");
     }

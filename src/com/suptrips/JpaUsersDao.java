@@ -51,6 +51,17 @@ public class JpaUsersDao implements UsersDao {
     }
 
     @Override
+    public Users verifUserPassword(String password) {
+        Users result;
+
+        EntityManager em = emf.createEntityManager();
+        try {
+            result = em.find(Users.class, password);
+        }catch (NoResultException)
+        return null;
+    }
+
+    @Override
     public List<Users> getAllUsers() {
         EntityManager em = emf.createEntityManager();
         try {

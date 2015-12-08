@@ -21,16 +21,10 @@ public class UpdateUserServlet {
         String lastanme = request.getParameter("newlastname").trim();
         String email = request.getParameter("newemail").trim();
         Users u = FactoryDao.getUsersDao().findUserById(Long.parseLong(request.getParameter("idbooster")));
-
-        if (firstname == null){
-
-        }
         u.setEmail(email);
         u.setFirstname(firstname);
         u.setLastname(lastanme);
         u.setPassword(newpassword);
-
-
         response.sendRedirect(request.getContextPath() + "/userprofile");
     }
 

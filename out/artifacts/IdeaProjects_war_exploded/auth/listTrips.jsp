@@ -1,5 +1,7 @@
 <%@ page import="com.suptrips.TripsDao"%>
 <%@ page import="com.suptrips.Trips"%>
+<%@ page import="com.suptrips.Users"%>
+<%@ page import="com.suptrips.UsersDao"%>
 <%@ page import="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,7 +12,7 @@
 </head>
 <body>
 <%@ include file="/header.jsp" %>
-<c:out value="${}"/>
+<c:out value="${users.firstname}" />
     <h1>List of All Trips</h1>
     <c:forEach items="${trips}" var="t">
         <p>-------------------------------------------------------------------------------------</p>
