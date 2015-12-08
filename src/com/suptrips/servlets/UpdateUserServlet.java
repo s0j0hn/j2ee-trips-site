@@ -20,7 +20,7 @@ public class UpdateUserServlet {
         String firstname = request.getParameter("newfirstname").trim();
         String lastanme = request.getParameter("newlastname").trim();
         String email = request.getParameter("newemail").trim();
-        Users u = FactoryDao.getUsersDao().findUserById(Long.parseLong(request.getParameter("idbooster")));
+        Users u = FactoryDao.getUsersDao().findUserById((request.getParameter("idbooster")));
         u.setEmail(email);
         u.setFirstname(firstname);
         u.setLastname(lastanme);

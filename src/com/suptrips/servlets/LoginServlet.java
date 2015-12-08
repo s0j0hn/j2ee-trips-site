@@ -17,12 +17,11 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idbooster = request.getParameter("idbooster");
-        String password = request.getParameter("password");
-
+        String idbooster = request.getParameter("idbooster").trim();
+        String password = request.getParameter("password").trim();
         HttpSession session = request.getSession();
-        session.setAttribute("idbooster", FactoryDao.getUsersDao().findUserById(Long.parseLong(idbooster)));
-        session.setAttribute("password", password);
+        session.setAttribute("idbooster", FactoryDao.getUsersDao().findUserById(idbooster));
+        session.setAttribute("password", FactoryDao.getUsersDao().verifUserPassword(password));
         response.sendRedirect(request.getContextPath() + "/auth/listTrips");
     }
 

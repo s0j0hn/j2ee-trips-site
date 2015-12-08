@@ -23,6 +23,9 @@ public class AuthFilter implements Filter {
         if (((HttpServletRequest) request).getSession().getAttribute("idbooster") != null) {
             chain.doFilter(request, response);
             return;
+        }else if (((HttpServletRequest) request).getSession().getAttribute("password") != null){
+            chain.doFilter(request, response);
+            return;
         }
         httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
     }
