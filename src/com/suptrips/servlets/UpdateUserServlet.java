@@ -6,13 +6,14 @@ import com.suptrips.Users;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/auth/updateuser")
-public class UpdateUserServlet {
+@WebServlet("/auth/profile")
+public class UpdateUserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -25,11 +26,13 @@ public class UpdateUserServlet {
         u.setFirstname(firstname);
         u.setLastname(lastanme);
         u.setPassword(newpassword);
-        response.sendRedirect(request.getContextPath() + "/userprofile");
+        response.sendRedirect(request.getContextPath() + "/auth/profile");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
+        String id = request.getParameter("idbooster");
+        request.setAttribute("users", FactoryDao.getUsersDao().findUserById(id));
+        RequestDispatcher rd = request.getRequestDispatcher("/auth/profile.jsp");
         rd.forward(request, response);
     }
 }

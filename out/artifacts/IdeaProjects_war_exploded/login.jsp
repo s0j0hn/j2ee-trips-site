@@ -10,9 +10,9 @@
 <%@ include file="/header.jsp" %>
     <form method="post" action="login">
         <label for="idbooster">Idbooster : </label>
-        <input id="idbooster" name="idbooster" /><br />
+        <input id="idbooster" name="idbooster"  required  /><br />
         <label for="password">Password : </label>
-        <input id="password" name="password" type="password" /><br />
+        <input id="password" name="password" type="password" required /><br />
         <input type="submit" />
     </form>
 </body>

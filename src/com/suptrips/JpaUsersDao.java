@@ -3,6 +3,7 @@ package com.suptrips;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
@@ -51,18 +52,19 @@ public class JpaUsersDao implements UsersDao {
     }
 
     @Override
-    public Users verifUserPassword(String password) {
-        Users result;
+    public Users verifUserPassword(String iduser, String pass) {
 
         EntityManager em = emf.createEntityManager();
         try {
-            result = em.find(Users.class, password);
+            Query query = em.createQuery("SELECT p FROM Users AS p WHERE p.password = :pass AND p.idbooster = :iduser");
+            query.setParameter("iduser", iduser);
+            query.setParameter("pass",pass);
+            return (Users) query.getSingleResult();
         }catch (NoResultException e){
-            result = null;
+            return null;
         }finally {
             em.close();
         }
-        return result;
     }
 
     @Override

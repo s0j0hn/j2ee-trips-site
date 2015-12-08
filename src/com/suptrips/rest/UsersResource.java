@@ -12,12 +12,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/profile")
+@Path("/auth/profile")
 public class UsersResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/listtrips")
-    public String getAllTripsinJson() throws JSONException {
+    @Path("/auth/profile")
+    public String getUserByIDJson() throws JSONException {
         List<Users> users = FactoryDao.getUsersDao().getAllUsers();
         JSONArray list1 = new JSONArray();
         for (Users users1 : users){
