@@ -16,10 +16,11 @@
     <h1>List of All Trips</h1>
     <c:forEach items="${trips}" var="t">
         <p>-------------------------------------------------------------------------------------</p>
-        <h2>Depart : <c:out value="${t.depart_campus}"/></h2>
+        <h3>Trip number : <c:out value="${t.idtrip}"/></h3>
+        <h3>Depart : <c:out value="${t.depart_campus}"/></h3>
         <p>
             <c:out value="${t.depart_date}" /><br />
-        <h2>Arrive : <c:out value="${t.arrive_campus}"/></h2>
+        <h3>Arrive : <c:out value="${t.arrive_campus}"/></h3>
         <c:out value="${t.arrive_date}" />  <br />
 
         <c:if test="${! empty sessionScope.idbooster}">

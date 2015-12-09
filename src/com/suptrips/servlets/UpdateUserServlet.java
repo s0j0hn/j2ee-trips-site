@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/auth/profile")
+@WebServlet("/auth/UpdateUserServlet")
 public class UpdateUserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,18 +21,27 @@ public class UpdateUserServlet extends HttpServlet {
         String firstname = request.getParameter("newfirstname").trim();
         String lastanme = request.getParameter("newlastname").trim();
         String email = request.getParameter("newemail").trim();
-        Users u = FactoryDao.getUsersDao().findUserById((request.getParameter("idbooster")));
+        long id = Long.parseLong(request.getParameter("idbooster"));
+        Users u = FactoryDao.getUsersDao().findUserById(id);
         u.setEmail(email);
         u.setFirstname(firstname);
         u.setLastname(lastanme);
         u.setPassword(newpassword);
-        response.sendRedirect(request.getContextPath() + "/auth/profile");
+        FactoryDao.getUsersDao().updateUsers(u);
+        response.sendRedirect(request.getContextPath() + "/auth/updateuser");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("idbooster");
-        request.setAttribute("users", FactoryDao.getUsersDao().findUserById(id));
-        RequestDispatcher rd = request.getRequestDispatcher("/auth/profile.jsp");
-        rd.forward(request, response);
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            long id = (long) ((HttpServletRequest) request).getSession().getAttribute("idbooster");
+
+            request.setAttribute("users", FactoryDao.getUsersDao().findUserById(id));
+            RequestDispatcher rd = request.getRequestDispatcher("/auth/updateuser.jsp");
+            rd.forward(request, response);
+
+        }catch(NumberFormatException e) {
+            //	out.println("Incorrect format");
+        }
+
     }
 }

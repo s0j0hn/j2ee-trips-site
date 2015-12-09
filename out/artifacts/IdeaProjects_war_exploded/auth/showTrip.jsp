@@ -13,7 +13,7 @@
 
 <p>
     Depart :<br />
-    <c:out value="${t.depart_date}" />
+    <c:out value="${trips.depart_date}" />
     <br />
     <c:out value="${trips.depart_campus}" />
 </p>

@@ -37,7 +37,7 @@ public class JpaUsersDao implements UsersDao {
     }
 
     @Override
-    public Users findUserById(String idbooster) {
+    public Users findUserById(long idbooster) {
         Users result;
 
         EntityManager em = emf.createEntityManager();
@@ -52,7 +52,7 @@ public class JpaUsersDao implements UsersDao {
     }
 
     @Override
-    public Users verifUserPassword(String iduser, String pass) {
+    public Users verifUserPassword(long iduser, String pass) {
 
         EntityManager em = emf.createEntityManager();
         try {

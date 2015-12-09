@@ -26,7 +26,7 @@ public class Users implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 
-	private String idbooster;
+	private long idbooster;
 	
 	@Column(name="firstname", nullable=true, length=45)	
 	private String firstname;
@@ -49,11 +49,11 @@ public class Users implements Serializable {
 
 	private Trips trip_idtrip;
 	
-	private void setIdbooster(String value) {
+	private void setIdbooster(long value) {
 		this.idbooster = value;
 	}
 	
-	public String getIdbooster() {
+	public long getIdbooster() {
 		return idbooster;
 	}
 	

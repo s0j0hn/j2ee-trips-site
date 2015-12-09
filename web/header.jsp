@@ -7,7 +7,7 @@
 
     <% if(session.getAttribute("idbooster") != null) { %>
     <a href="<%= application.getContextPath() %>/logout">Logout</a>
-    <a href="<%= application.getContextPath() %>/auth/profile"> Your Profile</a>
+    <a href="<%= application.getContextPath() %>/auth/updateuser"> Your Profile</a>
     <% } else { %>
     <a href="<%= application.getContextPath() %>/login">Login</a>
     <a href="<%= application.getContextPath() %>/register">Register</a>

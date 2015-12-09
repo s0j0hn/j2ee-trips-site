@@ -29,13 +29,13 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>profile</servlet-name>
+        <servlet-name>UpdateUserServlet</servlet-name>
         <servlet-class>com.suptrips.servlets.UpdateUserServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>profile</servlet-name>
-        <url-pattern>/auth/UpdateUserServlet</url-pattern>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <url-pattern>/auth/updateuser</url-pattern>
     </servlet-mapping>
 
     <servlet>

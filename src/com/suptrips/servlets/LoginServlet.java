@@ -18,21 +18,19 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("idbooster");
+        long id = Long.parseLong(request.getParameter("idbooster"));
         String pass = request.getParameter("password");
-        Users u = FactoryDao.getUsersDao().verifUserPassword(id,pass);
-        if ( u.getPassword().equals(pass) && u.getIdbooster().equals(id) ){
+        String passmd5 = AddUserServlet.hashMD5(pass);
+        Users u = FactoryDao.getUsersDao().verifUserPassword(id,passmd5);
+        if ( u.getPassword().equals(pass) && u.getIdbooster() == id ){
             HttpSession session = request.getSession();
-            session.setAttribute("password", pass);
+            session.setAttribute("password", passmd5);
             session.setAttribute("idbooster", id);
             response.sendRedirect(request.getContextPath() + "/auth/listTrips");
         }else {
             RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
             rd.forward(request, response);
         }
-
-
-        //session.setAttribute("password", FactoryDao.getUsersDao().verifUserPassword(password));
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

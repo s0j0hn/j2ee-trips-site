@@ -9,7 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by root on 02/12/15.
@@ -17,37 +21,44 @@ import java.io.IOException;
 @WebServlet("/register")
 public class AddUserServlet extends HttpServlet {
 
+    public static String hashMD5(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String hashstring = number.toString(16);
+
+            while (hashstring.length() < 32) {
+                hashstring = "0" + hashstring;
+            }
+            return hashstring;
+        }
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        String campusname = request.getParameter("campusname").trim();
-        String password = request.getParameter("password").trim();
-        String firstname = request.getParameter("firstname").trim();
-        String lastanme = request.getParameter("lastname").trim();
-        String email = request.getParameter("email").trim();
-        /*
-        //hash md5
-        //
-        byte[] bytesOfMessage = password.getBytes("UTF-8");
-        MessageDigest md = null;
-        try {
-            md = MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+        try{
+            String campusname = request.getParameter("campusname").trim();
+            String password = request.getParameter("password").trim();
+            String firstname = request.getParameter("firstname").trim();
+            String lastanme = request.getParameter("lastname").trim();
+            String email = request.getParameter("email").trim();
+
+            Users newuser = new Users();
+            newuser.setCampus_name(campusname);
+            newuser.setEmail(email);
+            newuser.setFirstname(firstname);
+            newuser.setLastname(lastanme);
+            newuser.setPassword(hashMD5(password));
+
+            request.setAttribute("users", FactoryDao.getUsersDao().addUser(newuser));
+        }catch(NumberFormatException e) {
         }
-        byte[] thedigest = md.digest(bytesOfMessage);
-        StringBuffer passwordmd5 = new StringBuffer();
-        for (byte b : thedigest) {
-            passwordmd5.append(String.format("%02x", b & 0xff));
-        }*/
-
-        Users newuser = new Users();
-        newuser.setCampus_name(campusname);
-        newuser.setEmail(email);
-        newuser.setFirstname(firstname);
-        newuser.setLastname(lastanme);
-        newuser.setPassword(password);
-
-        request.setAttribute("users", FactoryDao.getUsersDao().addUser(newuser));
+        HttpSession session = request.getSession();
+        session.setAttribute("idbooster", );
         response.sendRedirect(request.getContextPath() + "/login");
     }
 
@@ -55,4 +66,6 @@ public class AddUserServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/register.jsp");
         rd.forward(request, response);
     }
+
+
 }

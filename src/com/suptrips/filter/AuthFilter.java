@@ -20,7 +20,7 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-        if (((HttpServletRequest) request).getSession().getAttribute("password") != null) {
+        if (((HttpServletRequest) request).getSession().getAttribute("idbooster") != null) {
             chain.doFilter(request, response);
             return;
         }else{
