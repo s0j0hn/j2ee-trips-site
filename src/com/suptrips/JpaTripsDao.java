@@ -3,7 +3,9 @@ package com.suptrips;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
+import java.util.Date;
 import java.util.List;
 
 
@@ -34,7 +36,7 @@ public class JpaTripsDao implements TripsDao {
     }
 
     @Override
-    public Trips findProductById(Long idtrip) {
+    public Trips findTripsById(Long idtrip) {
         Trips result;
 
         EntityManager em = emf.createEntityManager();
@@ -59,6 +61,30 @@ public class JpaTripsDao implements TripsDao {
             em.close();
         }
 
+    }
+
+    @Override
+    public List<Trips> getAllUsersTrips(Long idbooster) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Query query = em.createQuery("SELECT t FROM Trips t AS t WHERE t.users_idbooster = :id");
+            query.setParameter("idbooster", idbooster);
+            return (List<Trips>) query.getResultList();
+        }catch (NoResultException e){
+            return null;
+        }finally {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<Trips> getAllTripsByDepartCampus(String dcampus) {
+        return null;
+    }
+
+    @Override
+    public List<Trips> getAllTripsByArriveCampus(String acampus) {
+        return null;
     }
 
     @Override

@@ -17,21 +17,21 @@ public class UpdateUserServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String newpassword = request.getParameter("newpassword").trim();
-        String firstname = request.getParameter("newfirstname").trim();
-        String lastanme = request.getParameter("newlastname").trim();
-        String email = request.getParameter("newemail").trim();
-        long id = Long.parseLong(request.getParameter("idbooster"));
+        String newpassword = request.getParameter("password").trim();
+        String firstname = request.getParameter("firstname").trim();
+        String lastanme = request.getParameter("lastname").trim();
+        String email = request.getParameter("email").trim();
+        long id = (long) ((HttpServletRequest) request).getSession().getAttribute("idbooster");
         Users u = FactoryDao.getUsersDao().findUserById(id);
         u.setEmail(email);
         u.setFirstname(firstname);
         u.setLastname(lastanme);
-        u.setPassword(newpassword);
+        u.setPassword(AddUserServlet.hashMD5(newpassword));
         FactoryDao.getUsersDao().updateUsers(u);
         response.sendRedirect(request.getContextPath() + "/auth/updateuser");
     }
 
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             long id = (long) ((HttpServletRequest) request).getSession().getAttribute("idbooster");
 

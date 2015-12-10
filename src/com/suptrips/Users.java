@@ -21,86 +21,87 @@ import java.io.Serializable;
 public class Users implements Serializable {
 	public Users() {
 	}
-	
-	@Column(name="idbooster", nullable=false, length=11)	
+
+	@Column(name="idbooster", nullable=false, length=11)
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long idbooster;
 
-	private long idbooster;
-	
-	@Column(name="firstname", nullable=true, length=45)	
+	@Column(name="firstname", nullable=true, length=45)
 	private String firstname;
-	
-	@Column(name="lastname", nullable=true, length=45)	
+
+	@Column(name="lastname", nullable=true, length=45)
 	private String lastname;
-	
-	@Column(name="email", nullable=true, length=45)	
+
+	@Column(name="email", nullable=true, length=45)
 	private String email;
+
+	@Column(name="campus_name", nullable=true, length=45)
+	private String campus_name;
 
 	@Column(name="password", nullable=false, length=45)
 	private String password;
 
-	@Column(name="campus_name", nullable=true, length=45)	
-	private String campus_name;
-	
-	@ManyToOne(targetEntity=Trips.class)
+	@OneToMany(mappedBy="users_idbooster", targetEntity=com.suptrips.Trips.class)
 
-	@JoinColumns({ @JoinColumn(name="Trip_idtrip", referencedColumnName="idtrip", nullable=true) })
+	private java.util.Set trips = new java.util.HashSet();
 
-	private Trips trip_idtrip;
-	
-	private void setIdbooster(long value) {
+	private void setIdbooster(Long value) {
 		this.idbooster = value;
 	}
-	
-	public long getIdbooster() {
+
+	public Long getIdbooster() {
 		return idbooster;
 	}
-	
+
 	public void setFirstname(String value) {
 		this.firstname = value;
 	}
-	
+
 	public String getFirstname() {
 		return firstname;
 	}
-	
+
 	public void setLastname(String value) {
 		this.lastname = value;
 	}
-	
+
 	public String getLastname() {
 		return lastname;
 	}
-	
+
 	public void setEmail(String value) {
 		this.email = value;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
-	
+
 	public void setCampus_name(String value) {
 		this.campus_name = value;
 	}
-	
+
 	public String getCampus_name() {
 		return campus_name;
 	}
-	
-	public void setTrip_idtrip(Trips value) {
-		this.trip_idtrip = value;
+
+	public void setPassword(String value) {
+		this.password = value;
 	}
 
-	public String getPassword(){ return password; }
-
-	public void setPassword(String value) { this.password = value; }
-
-	public Trips getTrip_idtrip() {
-		return trip_idtrip;
+	public String getPassword() {
+		return password;
 	}
-	
+
+	public void setTrips(java.util.Set value) {
+		this.trips = value;
+	}
+
+	public java.util.Set getTrips() {
+		return trips;
+	}
+
 	public String toString() {
 		return String.valueOf(getIdbooster());
 	}

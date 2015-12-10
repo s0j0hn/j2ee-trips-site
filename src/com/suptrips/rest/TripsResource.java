@@ -13,17 +13,7 @@ import java.util.List;
 @Path("/listtrips")
 public class TripsResource {
 
-    @GET @Produces(MediaType.APPLICATION_XML)
-    @Path("/listtrips")
-    public String getAllTripsInXml() {
-        List<Trips> trips = FactoryDao.getTripsDao().getAllTrips();
-        String result = new String("<?xml version=\"1.0\" encoding=\"UTF-8\"?><trips>");
-        for (Trips trips1 : trips){
-            result = result.concat("<trips><idtrip>"+trips1.getIdtrip()+"</idtrip><arrive_date>"+trips1.getArrive_campus()+"</arrive_date><depart_date>"+trips1.getDepart_date()+"</depart_date><depart_campus>"+trips1.getDepart_campus()+"</depart_campus></trips>");
-        }
-        result = result.concat("</trips>");
-        return result;
-    }
+
 //un peu mieux en json
     @GET @Produces(MediaType.APPLICATION_JSON)
     @Path("/listtrips")
@@ -37,25 +27,29 @@ public class TripsResource {
             obj1.put("arrive_date",trips1.getArrive_campus());
             obj1.put("depart_campus",trips1.getDepart_campus());
             obj1.put("depart_date",trips1.getDepart_date());
+            obj1.put("airport_name",trips1.getAirport_name());
+            obj1.put("user_idbooster",trips1.getUsers_idboosterId());
             list1.put(obj1);
         }
         return list1.toString();
     }
 
-    @GET @Path("/listtrips/{idtrip}")
+    /*@GET @Path("/listtrips/{idtrip}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getTripsInJson(@PathParam("idtrip") Long idtrip) throws JSONException {
-        Trips trips1 = FactoryDao.getTripsDao().findProductById(idtrip);
+        Trips trips1 = FactoryDao.getTripsDao().findTripsById(idtrip);
         JSONObject obj1 = new JSONObject();
         obj1.put("idtrip",trips1.getIdtrip());
         obj1.put("arrive_campus",trips1.getArrive_campus());
         obj1.put("arrive_date",trips1.getArrive_campus());
         obj1.put("depart_campus",trips1.getDepart_campus());
         obj1.put("depart_date",trips1.getDepart_date());
+        obj1.put("airport_name",trips1.getAirport_name());
+        obj1.put("user_idbooster",trips1.getUsers_idboosterId());
         return obj1.toString();
     }
     @DELETE @Path("/listtrips/{id}")
     public void removeTrips(@PathParam("idtrip") Long idtrip){
-        FactoryDao.getTripsDao().removeTrips(FactoryDao.getTripsDao().findProductById(idtrip));
-    }
+        FactoryDao.getTripsDao().removeTrips(FactoryDao.getTripsDao().findTripsById(idtrip));
+    }*/
 }

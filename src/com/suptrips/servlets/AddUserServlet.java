@@ -58,7 +58,6 @@ public class AddUserServlet extends HttpServlet {
         }catch(NumberFormatException e) {
         }
         HttpSession session = request.getSession();
-        session.setAttribute("idbooster", );
         response.sendRedirect(request.getContextPath() + "/login");
     }
 

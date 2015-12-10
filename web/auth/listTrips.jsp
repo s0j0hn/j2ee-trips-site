@@ -12,16 +12,18 @@
 </head>
 <body>
 <%@ include file="/header.jsp" %>
-<c:out value="${users.firstname}" />
+
     <h1>List of All Trips</h1>
     <c:forEach items="${trips}" var="t">
         <p>-------------------------------------------------------------------------------------</p>
         <h3>Trip number : <c:out value="${t.idtrip}"/></h3>
+        <h3>Taken by idbooster : <c:out value="${t.users_idbooster}"/></h3>
+        <h4>Airport name : <c:out value="${t.airport_name}"/></h4>
         <h3>Depart : <c:out value="${t.depart_campus}"/></h3>
         <p>
-            <c:out value="${t.depart_date}" /><br />
+            <c:out value="${t.depart_date}" />
         <h3>Arrive : <c:out value="${t.arrive_campus}"/></h3>
-        <c:out value="${t.arrive_date}" />  <br />
+        <c:out value="${t.arrive_date}" />
 
         <c:if test="${! empty sessionScope.idbooster}">
             <form method="post" action="<%=request.getContextPath()%>/auth/addToBag">

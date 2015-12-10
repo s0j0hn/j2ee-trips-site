@@ -9,8 +9,8 @@
 <body>
 <%@ include file="/header.jsp" %>
 <h3>Welcome user : <c:out value="${sessionScope.idbooster}"/></h3>
-<h5>Your personal info are :</h5><br/>
-<form method="post" action="updateuser">
+<h5>Your personal info are :</h5>
+<form method="post" action="/auth/updateuser">
         <label for="firstname">New firstname : </label>
         <input id="firstname" name="firstname" value="<c:out value="${users.firstname}"/>" /><br />
         <label for="password">New Password : </label>
@@ -19,7 +19,7 @@
         <input id="lastname" name="lastname" value="<c:out value="${users.lastname}"/>" /><br />
         <label for="email">New email : </label>
         <input id="email" name="email" value="<c:out value="${users.email}"/>" /><br />
-        <input type="submit" />
+        <input type="submit" value="Change"/>
 
 </form>
 </body>

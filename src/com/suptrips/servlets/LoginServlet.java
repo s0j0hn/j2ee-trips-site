@@ -18,16 +18,21 @@ import java.io.IOException;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        long id = Long.parseLong(request.getParameter("idbooster"));
-        String pass = request.getParameter("password");
-        String passmd5 = AddUserServlet.hashMD5(pass);
-        Users u = FactoryDao.getUsersDao().verifUserPassword(id,passmd5);
-        if ( u.getPassword().equals(pass) && u.getIdbooster() == id ){
-            HttpSession session = request.getSession();
-            session.setAttribute("password", passmd5);
-            session.setAttribute("idbooster", id);
-            response.sendRedirect(request.getContextPath() + "/auth/listTrips");
-        }else {
+        try {
+            long id = Long.parseLong(request.getParameter("idbooster"));
+            String pass = request.getParameter("password");
+            String passmd5 = AddUserServlet.hashMD5(pass);
+            Users u = FactoryDao.getUsersDao().verifUserPassword(id,passmd5);
+            if ( u.getPassword().equals(passmd5) && u.getIdbooster() == id ){
+                HttpSession session = request.getSession();
+                session.setAttribute("password", passmd5);
+                session.setAttribute("idbooster", id);
+                response.sendRedirect(request.getContextPath() + "/auth/listTrips");
+            }else {
+                RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+                rd.forward(request, response);
+            }
+        }catch (NullPointerException e){
             RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
             rd.forward(request, response);
         }
