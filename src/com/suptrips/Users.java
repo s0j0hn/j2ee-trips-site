@@ -24,7 +24,6 @@ public class Users implements Serializable {
 
 	@Column(name="idbooster", nullable=false, length=11)
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long idbooster;
 
 	@Column(name="firstname", nullable=true, length=45)
@@ -46,7 +45,7 @@ public class Users implements Serializable {
 
 	private java.util.Set trips = new java.util.HashSet();
 
-	private void setIdbooster(Long value) {
+	public void setIdbooster(Long value) {
 		this.idbooster = value;
 	}
 
@@ -105,5 +104,5 @@ public class Users implements Serializable {
 	public String toString() {
 		return String.valueOf(getIdbooster());
 	}
-	
+
 }

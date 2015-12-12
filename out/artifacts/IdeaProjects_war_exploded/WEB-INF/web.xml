@@ -39,6 +39,16 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>SearchTripByAirportServlet</servlet-name>
+        <servlet-class>com.suptrips.servlets.SearchTripServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SearchTripByAirportServlet</servlet-name>
+        <url-pattern>/searchtripsbyairport</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>SearchTripServlet</servlet-name>
         <servlet-class>com.suptrips.servlets.SearchTripServlet</servlet-class>
     </servlet>

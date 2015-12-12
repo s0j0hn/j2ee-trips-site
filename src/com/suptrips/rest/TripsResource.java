@@ -71,4 +71,23 @@ public class TripsResource {
         }
         return list14.toString();
     }
+
+    @GET @Produces(MediaType.APPLICATION_JSON)
+    @Path("/searchtripsbyairport")
+    public String getAllTripsByAirportinJson(@PathParam("airport") String airport) throws JSONException {
+        List<Trips> trips15 = FactoryDao.getTripsDao().getAllTripsByAirport(airport);
+        JSONArray list15 = new JSONArray();
+        for (Trips trips5 : trips15){
+            JSONObject obj1 = new JSONObject();
+            obj1.put("idtrip",trips5.getIdtrip());
+            obj1.put("arrive_campus",trips5.getArrive_campus());
+            obj1.put("arrive_date",trips5.getArrive_campus());
+            obj1.put("depart_campus",trips5.getDepart_campus());
+            obj1.put("depart_date",trips5.getDepart_date());
+            obj1.put("airport_name",trips5.getAirport_name());
+            obj1.put("user_idbooster",trips5.getUsers_idboosterId());
+            list15.put(obj1);
+        }
+        return list15.toString();
+    }
 }

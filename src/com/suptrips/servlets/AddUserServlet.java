@@ -15,9 +15,7 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * Created by root on 02/12/15.
- */
+
 @WebServlet("/register")
 public class AddUserServlet extends HttpServlet {
 
@@ -41,6 +39,7 @@ public class AddUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         try{
+            Long id = Long.valueOf(request.getParameter("id").trim());
             String campusname = request.getParameter("campusname").trim();
             String password = request.getParameter("password").trim();
             String firstname = request.getParameter("firstname").trim();
@@ -48,6 +47,7 @@ public class AddUserServlet extends HttpServlet {
             String email = request.getParameter("email").trim();
 
             Users newuser = new Users();
+            newuser.setIdbooster(id);
             newuser.setCampus_name(campusname);
             newuser.setEmail(email);
             newuser.setFirstname(firstname);

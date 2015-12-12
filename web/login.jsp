@@ -14,7 +14,7 @@
         <input id="idbooster" name="idbooster"  required  /><br />
         <label for="password">Password : </label>
         <input id="password" name="password" type="password" required /><br />
-        <input type="submit" />
+        <input type="submit" value="Login"/>
     </form>
 </body>
 </html>

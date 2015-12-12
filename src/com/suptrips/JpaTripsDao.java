@@ -78,6 +78,20 @@ public class JpaTripsDao implements TripsDao {
     }
 
     @Override
+    public List<Trips> getAllTripsByAirport(String airport) {
+        EntityManager em = emf.createEntityManager();
+        try {
+                Query q1 = em.createQuery("SELECT t FROM Trips AS t WHERE t.airport_name = :airport");
+                q1.setParameter("airport", airport);
+                return q1.getResultList();
+        }catch (NoResultException e){
+            return null;
+        }finally {
+            em.close();
+        }
+    }
+
+    @Override
     public List<Trips> getAllTripsByCampus(String campus, int campuschoice) {
         EntityManager em = emf.createEntityManager();
         //depart = 0

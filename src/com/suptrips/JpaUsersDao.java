@@ -7,9 +7,7 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-/**
- * Created by root on 02/12/15.
- */
+
 public class JpaUsersDao implements UsersDao {
 
     private EntityManagerFactory emf;

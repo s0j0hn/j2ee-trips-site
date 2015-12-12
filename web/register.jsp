@@ -7,7 +7,11 @@
     <title>Register</title>
 </head>
 <body>
-<form method="post" action="/register">
+<form method="post" action="register">
+
+    <label for="id">Idbooster : </label>
+    <input id="id" name="id" /><br />
+
     <label for="firstname">Firstname : </label>
     <input id="firstname" name="firstname" /><br />
 
