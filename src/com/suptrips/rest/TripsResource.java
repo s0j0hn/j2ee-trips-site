@@ -16,7 +16,7 @@ public class TripsResource {
 
 //un peu mieux en json
     @GET @Produces(MediaType.APPLICATION_JSON)
-    @Path("/listtrips")
+    @Path("/index")
     public String getAllTripsinJson() throws JSONException {
         List<Trips> trips = FactoryDao.getTripsDao().getAllTrips();
         JSONArray list1 = new JSONArray();

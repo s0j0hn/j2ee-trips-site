@@ -13,9 +13,9 @@
         </c:when>
         <c:otherwise>
             <h4>AVAILABLE</h4>
-            <form method="post" action="<%=request.getContextPath()%>/auth/addToBag">
-                <input type="submit" value="Add to Bag">
-            </form>
+            <% if(session.getAttribute("idbooster") != null) { %>
+            <%@ include file="/auth/addToBag.jsp" %>
+            <% } %>
         </c:otherwise>
     </c:choose>
     <h4>Airport name : <c:out value="${t.airport_name}"/></h4>

@@ -8,7 +8,6 @@
 </head>
 <body>
 <%@ include file="/header.jsp" %>
-<%@ include file="/search.jsp" %>
     <form method="post" action="login">
         <label for="idbooster">Idbooster : </label>
         <input id="idbooster" name="idbooster"  required  /><br />

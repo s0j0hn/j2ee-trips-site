@@ -5,8 +5,18 @@
          version="3.1">
     <display-name>SupTrips</display-name>
     <welcome-file-list>
-        <welcome-file>login</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+        <servlet-name>AddToBagServlet</servlet-name>
+        <servlet-class>com.suptrips.servlets.AddToBagServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddToBagServlet</servlet-name>
+        <url-pattern>/AddToBagServlet</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>login</servlet-name>
@@ -25,7 +35,7 @@
 
     <servlet-mapping>
         <servlet-name>AddUserServlet</servlet-name>
-        <url-pattern>/AddUserServlet</url-pattern>
+        <url-pattern>/auth/addtobag</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -65,7 +75,7 @@
 
     <servlet-mapping>
         <servlet-name>ListTripsServlet</servlet-name>
-        <url-pattern>/auth/listTrips</url-pattern>
+        <url-pattern>/index</url-pattern>
     </servlet-mapping>
 
     <servlet>

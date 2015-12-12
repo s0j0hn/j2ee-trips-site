@@ -12,9 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-/**
- * Created by root on 02/12/15.
- */
+
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,13 +25,13 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("password", passmd5);
                 session.setAttribute("idbooster", id);
-                response.sendRedirect(request.getContextPath() + "/auth/listTrips");
+                response.sendRedirect(request.getContextPath() + "/index");
             }else {
-                RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/login");
                 rd.forward(request, response);
             }
         }catch (NullPointerException e){
-            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/login");
             rd.forward(request, response);
         }
     }

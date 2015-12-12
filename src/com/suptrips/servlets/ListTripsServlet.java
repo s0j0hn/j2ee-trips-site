@@ -16,7 +16,7 @@ public class ListTripsServlet extends HttpServlet {
 
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("trips", FactoryDao.getTripsDao().getAllTrips());
-        RequestDispatcher rd = request.getRequestDispatcher("/auth/listTrips.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
         rd.forward(request, response);
     }
 }

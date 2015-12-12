@@ -15,6 +15,7 @@ package com.suptrips;
 
 import javax.persistence.*;
 import java.io.Serializable;
+
 @Entity
 
 @Table(name="Users" , schema="SupTrips" )

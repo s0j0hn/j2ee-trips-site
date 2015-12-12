@@ -47,7 +47,7 @@ public class Trips implements Serializable {
 	@Id
 	private Long users_idboosterId;
 
-	private void setUsers_idboosterId(Long value) {
+	public void setUsers_idboosterId(Long value) {
 		this.users_idboosterId = value;
 	}
 

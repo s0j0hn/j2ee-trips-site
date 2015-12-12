@@ -15,6 +15,6 @@ pageEncoding="UTF-8"%>
 </form>
 
 <form method="post" action="searchtripsbyairport">
-    <input type="text" id="airport" name="airport" placeholder="Search your trip by airport .." />
+    <input type="text" id="airport" name="airport" value="" />
     <input type="submit" value="Search">
 </form>
